@@ -431,6 +431,60 @@ body {
   width: 100%;
 }
 
+/* ===== SOLUTIONS DROPDOWN ===== */
+.solutions-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 16px 48px var(--shadow-color), 0 2px 8px var(--shadow-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 100;
+}
+
+.solutions-dropdown-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.solutions-dropdown-item {
+  display: block;
+  padding: 0.625rem 0.75rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.solutions-dropdown-item:hover {
+  background-color: var(--border-subtle);
+}
+
+.solutions-dropdown-item:hover span:first-child {
+  color: var(--accent-copper);
+}
+
+.solutions-dropdown-sector {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.solutions-dropdown-sector:hover {
+  color: var(--accent-copper);
+  background-color: var(--border-subtle);
+}
+
 /* ===== Tag / pill ===== */
 .tag {
   display: inline-block;

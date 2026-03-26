@@ -88,15 +88,15 @@ export default function ResearchPage() {
           <SectionReveal delay={300}>
             <div className="flex flex-wrap gap-12 mt-10 pt-8 border-t border-(--border-subtle)">
               <div>
-                <span className="font-display text-3xl text-(--accent-copper)">41</span>
+                <span className="font-display text-3xl text-accent-copper">41</span>
                 <p className="text-xs font-semibold tracking-widest uppercase text-(--text-muted) mt-1">Published Papers</p>
               </div>
               <div>
-                <span className="font-display text-3xl text-(--accent-copper)">4</span>
+                <span className="font-display text-3xl text-accent-copper">4</span>
                 <p className="text-xs font-semibold tracking-widest uppercase text-(--text-muted) mt-1">Research Pillars</p>
               </div>
               <div>
-                <span className="font-display text-3xl text-(--accent-copper)">12</span>
+                <span className="font-display text-3xl text-accent-copper">12</span>
                 <p className="text-xs font-semibold tracking-widest uppercase text-(--text-muted) mt-1">Research Partners</p>
               </div>
             </div>
@@ -113,13 +113,13 @@ export default function ResearchPage() {
                 <div className="card grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-14 group cursor-pointer">
                   {/* Left */}
                   <div className="flex flex-col gap-3">
-                    <span className="text-xs font-semibold tracking-widest uppercase text-(--accent-copper)">
+                    <span className="text-xs font-semibold tracking-widest uppercase text-accent-copper">
                       0{i + 1}
                     </span>
-                    <h2 className="font-display text-2xl md:text-3xl tracking-tight group-hover:text-(--accent-copper) transition-colors">
+                    <h2 className="font-display text-2xl md:text-3xl tracking-tight group-hover:text-accent-copper transition-colors">
                       {area.area}
                     </h2>
-                    <span className="text-xs font-semibold tracking-widest uppercase text-(--accent-sage) mt-2">
+                    <span className="text-xs font-semibold tracking-widest uppercase text-accent-sage mt-2">
                       {area.papers}
                     </span>
                   </div>
@@ -135,7 +135,7 @@ export default function ResearchPage() {
                     <ul className="flex flex-col gap-2">
                       {area.focus.map((f) => (
                         <li key={f} className="flex items-start gap-3 text-sm text-(--text-secondary)">
-                          <ArrowRightIcon className="w-3.5 h-3.5 text-(--accent-copper) mt-0.5 shrink-0" />
+                          <ArrowRightIcon className="w-3.5 h-3.5 text-accent-copper mt-0.5 shrink-0" />
                           {f}
                         </li>
                       ))}

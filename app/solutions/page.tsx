@@ -109,7 +109,7 @@ export default function SolutionsPage() {
                 <div className="card grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-14">
                   {/* Left */}
                   <div className="flex flex-col gap-4">
-                    <span className="text-xs font-semibold tracking-widest uppercase text-(--accent-copper)">
+                    <span className="text-xs font-semibold tracking-widest uppercase text-accent-copper">
                       0{i + 1}
                     </span>
                     <h2 className="font-display text-2xl md:text-3xl tracking-tight">
@@ -131,7 +131,7 @@ export default function SolutionsPage() {
                           key={feature}
                           className="flex items-start gap-3 text-sm text-(--text-secondary)"
                         >
-                          <CheckIcon className="w-4 h-4 text-(--accent-sage) mt-0.5 shrink-0" />
+                          <CheckIcon className="w-4 h-4 text-accent-sage mt-0.5 shrink-0" />
                           {feature}
                         </li>
                       ))}
@@ -164,7 +164,7 @@ export default function SolutionsPage() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="mailto:contact@truthauditlabs.com"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-(--accent-copper) text-white font-medium text-sm tracking-wide hover:bg-(--accent-copper-light) transition-all duration-300 hover:translate-y-px hover:shadow-[0_4px_20px_rgba(184,115,62,0.3)] no-underline"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-accent-copper text-white font-medium text-sm tracking-wide hover:bg-(--accent-copper-light) transition-all duration-300 hover:translate-y-px hover:shadow-[0_4px_20px_rgba(184,115,62,0.3)] no-underline"
                 >
                   Book a Demo
                   <ArrowRightIcon className="w-4 h-4" />
