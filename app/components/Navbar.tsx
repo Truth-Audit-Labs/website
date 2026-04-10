@@ -1,9 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
 import ThemeToggle from "./ThemeToggle";
+
+// ============================================================
+// ARCHIVED — full navigation with dropdowns
+// Preserved for reference when the full site is launched.
+// ============================================================
 
 const NAV_LINKS = [
   { label: "Research", href: "/research" },
@@ -42,7 +48,7 @@ const SOLUTIONS_SECTORS = [
   { label: "Government", href: "/solutions" },
 ];
 
-export default function Navbar() {
+export function NavbarArchived() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -119,9 +125,8 @@ export default function Navbar() {
             onMouseLeave={handleDropdownLeave}
           >
             <button
-              className={`nav-link inline-flex items-center gap-1 bg-transparent border-none cursor-pointer font-[inherit] ${
-                pathname === "/solutions" ? "nav-link-active" : ""
-              }`}
+              className={`nav-link inline-flex items-center gap-1 bg-transparent border-none cursor-pointer font-[inherit] ${pathname === "/solutions" ? "nav-link-active" : ""
+                }`}
               onClick={() => setSolutionsOpen(!solutionsOpen)}
               aria-expanded={solutionsOpen}
               aria-haspopup="true"
@@ -151,7 +156,7 @@ export default function Navbar() {
               <div className="flex gap-0 min-w-[620px]">
                 {/* Products column */}
                 <div className="flex-1 p-6 pr-4">
-                  <span className="block text-[0.7rem] font-semibold tracking-[0.12em] uppercase text-[var(--text-muted)] mb-4">
+                  <span className="block text-[0.7rem] font-semibold tracking-[0.12em] uppercase text-(--text-muted) mb-4">
                     By Product
                   </span>
                   <div className="flex flex-col gap-1">
@@ -161,10 +166,10 @@ export default function Navbar() {
                         href={item.href}
                         className="solutions-dropdown-item"
                       >
-                        <span className="block text-sm font-medium text-[var(--text-primary)]">
+                        <span className="block text-sm font-medium text-foreground">
                           {item.label}
                         </span>
-                        <span className="block text-xs text-[var(--text-muted)] mt-0.5">
+                        <span className="block text-xs text-(--text-muted) mt-0.5">
                           {item.description}
                         </span>
                       </Link>
@@ -173,11 +178,11 @@ export default function Navbar() {
                 </div>
 
                 {/* Divider */}
-                <div className="w-px bg-[var(--border-subtle)] my-6" />
+                <div className="w-px bg-(--border-subtle) my-6" />
 
                 {/* Sectors column */}
                 <div className="w-[180px] p-6 pl-4">
-                  <span className="block text-[0.7rem] font-semibold tracking-[0.12em] uppercase text-[var(--text-muted)] mb-4">
+                  <span className="block text-[0.7rem] font-semibold tracking-[0.12em] uppercase text-(--text-muted) mb-4">
                     By Sector
                   </span>
                   <div className="flex flex-col gap-1">
@@ -195,13 +200,13 @@ export default function Navbar() {
               </div>
 
               {/* Bottom bar */}
-              <div className="border-t border-[var(--border-subtle)] px-6 py-3 flex items-center justify-between">
-                <span className="text-xs text-[var(--text-muted)]">
+              <div className="border-t border-(--border-subtle) px-6 py-3 flex items-center justify-between">
+                <span className="text-xs text-(--text-muted)">
                   Explore all solutions
                 </span>
                 <Link
                   href="/solutions"
-                  className="text-xs font-medium text-[var(--accent-copper)] hover:underline"
+                  className="text-xs font-medium text-accent-copper hover:underline"
                 >
                   View all &rarr;
                 </Link>
@@ -263,9 +268,8 @@ export default function Navbar() {
           {/* Mobile Solutions accordion */}
           <button
             onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-            className={`nav-link py-3 text-base bg-transparent border-none cursor-pointer text-left font-[inherit] inline-flex items-center gap-2 ${
-              pathname === "/solutions" ? "nav-link-active" : ""
-            }`}
+            className={`nav-link py-3 text-base bg-transparent border-none cursor-pointer text-left font-[inherit] inline-flex items-center gap-2 ${pathname === "/solutions" ? "nav-link-active" : ""
+              }`}
           >
             Solutions
             <svg
@@ -285,23 +289,22 @@ export default function Navbar() {
             </svg>
           </button>
           <div
-            className={`overflow-hidden transition-all duration-300 ${
-              mobileSolutionsOpen ? "max-h-[400px]" : "max-h-0"
-            }`}
+            className={`overflow-hidden transition-all duration-300 ${mobileSolutionsOpen ? "max-h-[400px]" : "max-h-0"
+              }`}
           >
             <div className="pl-4 flex flex-col gap-1 pb-2">
               {SOLUTIONS_PRODUCTS.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors no-underline"
+                  className="py-2 text-sm text-(--text-secondary) hover:text-foreground transition-colors no-underline"
                 >
                   {item.label}
                 </Link>
               ))}
               <Link
                 href="/solutions"
-                className="py-2 text-xs font-medium text-[var(--accent-copper)] no-underline"
+                className="py-2 text-xs font-medium text-accent-copper no-underline"
               >
                 View all solutions &rarr;
               </Link>
@@ -314,6 +317,51 @@ export default function Navbar() {
           >
             Get In Touch
           </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+// ============================================================
+// ACTIVE NAVBAR — minimal stealth-mode navigation
+// ============================================================
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? "backdrop-blur-md bg-(--bg-primary)/90 shadow-[0_1px_0_var(--border-subtle)]"
+        : "bg-transparent"
+        }`}
+    >
+      <div className="section-container flex items-center justify-between h-[72px]">
+        {/* Logo */}
+        <Link href="/" className="flex items-center no-underline mb-[-6]">
+          <Image
+            src="/TAL_logo_transparent.png"
+            alt="Truth Audit Labs"
+            width={64}
+            height={64}
+            className="shrink-0"
+            priority
+          />
+          {/* <span className="font-display text-lg tracking-tight text-foreground">
+            Truth Audit Labs
+          </span> */}
+        </Link>
+
+        {/* Right side */}
+        <div className="flex items-center">
+          <ThemeToggle />
         </div>
       </div>
     </nav>

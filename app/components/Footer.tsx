@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+// ============================================================
+// ARCHIVED — full footer with link columns
+// Preserved for reference when the full site is launched.
+// ============================================================
+
 const FOOTER_LINKS = {
   Solutions: [
     { label: "Safety Monitor", href: "/solutions" },
@@ -21,7 +26,7 @@ const FOOTER_LINKS = {
   ],
 };
 
-export default function Footer() {
+export function FooterArchived() {
   return (
     <footer className="bg-(--bg-dark) text-(--text-on-dark)">
       <div className="section-container section-padding">
@@ -85,6 +90,28 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+      </div>
+    </footer>
+  );
+}
+
+// ============================================================
+// ACTIVE FOOTER — minimal stealth-mode footer
+// ============================================================
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-(--border-subtle)">
+      <div className="section-container py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-(--text-muted)">
+        <span>
+          © {new Date().getFullYear()} Truth Audit Labs Private Limited. All rights reserved.
+        </span>
+        <Link
+          href="/contact"
+          className="hover:text-foreground transition-colors no-underline text-(--text-muted)"
+        >
+          Contact Us
+        </Link>
       </div>
     </footer>
   );
